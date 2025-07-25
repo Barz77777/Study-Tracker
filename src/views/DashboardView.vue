@@ -1,6 +1,6 @@
 <template>
   <MainLayout>
-  <div class="min-h-screen bg-gray-100">
+  <div class="min-h-screen bg-[var(--background)]">
     <!-- Header -->
     <header class="bg-white shadow-sm border-b px-6 py-4">
       <div class="flex items-center justify-between">
@@ -19,7 +19,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
           </div>
-          <button class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+          <button class="bg-[var(--primary)] text-white px-4 py-2 rounded-lg transition delay-150 duration-150 ease-in-out hover:-translate-y-1 hover:scale-105">
             + Create task
           </button>
         </div>
@@ -32,11 +32,9 @@
         <div class="flex items-center justify-between mb-6">
           <div class="flex items-center space-x-4">
             <button class="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"></path>
-              </svg>
-              <span>Filter</span>
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <ListFilter style="color: var(--icon-color);" class="w-4 h-4" />
+              <span style="color: var(--text)">Filter</span>
+              <svg class="w-4 h-4" style="color: var(--icon-color)" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
               </svg>
             </button>
@@ -397,6 +395,7 @@
 import { auth as firebaseAuth } from '@/services/firebase'
 import { ref, reactive } from 'vue'
 import MainLayout from '@/layouts/MainLayout.vue'
+import { ListFilter } from 'lucide-vue-next'
 
 // State untuk tasks
 const tasks = reactive({

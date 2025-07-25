@@ -1,11 +1,11 @@
 <template>
   <div v-if="!loading">
-    <MainLayout v-if="isAuthenticated">
-      <RouterView />
-    </MainLayout>
-    <AuthLayout v-else>
+    <AuthLayout v-if="isAuthenticated">
       <RouterView />
     </AuthLayout>
+    <MainLayout v-else>
+      <RouterView />
+    </MainLayout>
   </div>
 </template>
 

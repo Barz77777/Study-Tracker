@@ -3,20 +3,36 @@
 @tailwind components;
 @tailwind utilities;
 
-#app {
-  font-weight: normal;
+@layer base {
+  :root {
+    --text: #040b0a;
+    --background: #f8fcfc;
+    --primary: #4ebcb1;
+    --secondary: #97b8d8;
+    --accent: #7294ca;
+    --icon-color: #4b5563;
+  }
+
+  .dark {
+    --text: #f4fbfa;
+    --background: #030808;
+    --primary: #43b1a6;
+    --secondary: #274868;
+    --accent: #35578d;
+    --icon-color: #ffffff;
+  }
+
+  body {
+    @apply font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
+/* @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
-}
+} */
