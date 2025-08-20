@@ -6,19 +6,20 @@ import { useAuthStore } from '@/stores/auth'
 
 const routes = [
   {
-    path: '/',
+    path: '/login',
     name: 'Login',
     component: AuthView,
+    meta: { layout: 'auth' },
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
     component: DashboardView,
-    meta: { requiresAuth: true },
+    meta: { requiresAuth: true, layout: 'main' },
   },
   {
     path: '/:pathMatch(.*)*',
-    redirect: '/',
+    redirect: '/login', // fallback jangan ke "/" karena belum ada
   },
 ]
 
@@ -30,13 +31,23 @@ const router = createRouter({
 // Middleware (navigation guard)
 router.beforeEach((to, from, next) => {
   const auth = useAuthStore()
+  console.log('Navigating to:', to.path, '| isAuth:', auth.isAuthenticated)
 
-  // Jika route butuh login dan user belum login
+  // butuh login, tapi belum login
   if (to.meta.requiresAuth && !auth.isAuthenticated) {
-    next('/') // redirect ke login
-  } else {
-    next() // lanjut ke halaman
+    if (to.path !== '/login') {
+      return next('/login')
+    }
   }
+
+  // kalau udah login tapi buka /login
+  if (to.path === '/login' && auth.isAuthenticated) {
+    if (to.path !== '/dashboard') {
+      return next('/dashboard')
+    }
+  }
+
+  return next()
 })
 
 export default router

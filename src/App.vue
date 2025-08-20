@@ -1,23 +1,26 @@
 <template>
   <div v-if="!loading">
-    <AuthLayout v-if="isAuthenticated">
+    <component :is="layout">
       <RouterView />
-    </AuthLayout>
-    <MainLayout v-else>
-      <RouterView />
-    </MainLayout>
+    </component>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/auth'
+import { useRoute } from 'vue-router'
 import MainLayout from '@/layouts/MainLayout.vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 
 const auth = useAuthStore()
-const isAuthenticated = computed(() => auth.isAuthenticated)
+const route = useRoute()
 const loading = ref(true)
+
+const layout = computed (() => {
+  if (route.meta.layout === 'auth') return AuthLayout
+  return MainLayout
+})
 
 onMounted(async () => {
   await auth.fetchUser()

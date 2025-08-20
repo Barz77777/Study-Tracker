@@ -20,7 +20,7 @@ const animationDuration = computed(() => `${props.speed}s`);
 
 <template>
   <div
-    :class="`text-[#ffffffd9] bg-clip-text inline-block ${!props.disabled ? 'animate-shine' : ''} ${props.className}`"
+    :class="`text-[var(--text)] bg-clip-text inline-block ${!props.disabled ? 'animate-shine' : ''} ${props.className}`"
     :style="{
       backgroundImage:
         'linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 60%)',

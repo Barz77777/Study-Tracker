@@ -14,13 +14,8 @@
         >
           <!-- Header with Icon -->
           <div class="text-center mb-8">
-            <ShinyText
-              text="Welcome Back!"
-              :disabled="false"
-              :speed="2"
-              class="text-3xl font-bold bg-clip-text mb-1"
-            />
-            <p class="text-gray-300 mt-2">Sign in to your account</p>
+           <h1 class="text-[var(--text)] text-3xl font-bold mb-1">Welcome Back!</h1>
+            <p class="text-[var(--text)] mt-2">Sign in to your account</p>
           </div>
 
           <!-- Login Form -->
@@ -29,7 +24,7 @@
             <div class="input-group">
               <div class="relative">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <UserRound class="relative w-5 h-5" />
+                  <UserRound class="text-[var(--icon-color)] relative w-5 h-5" />
                 </div>
                 <input
                   v-model="email"
@@ -37,7 +32,7 @@
                   placeholder="Email address"
                   required
                   aria-label="Email address"
-                  class="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300"
+                  class="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--text)] rounded-3xl text-[var(--text)] placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300"
                 />
               </div>
             </div>
@@ -46,7 +41,7 @@
             <div class="input-group">
               <div class="relative">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <LockKeyhole class="relative w-5 h-5" />
+                  <LockKeyhole class="text-[var(--icon-color)] relative w-5 h-5" />
                 </div>
                 <input
                   v-model="password"
@@ -54,12 +49,12 @@
                   placeholder="Password"
                   required
                   aria-label="Password"
-                  class="w-full pl-10 pr-12 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all duration-300"
+                  class="w-full pl-10 pr-12 py-3 bg-[var(--background)] border border-[var(--text)] rounded-3xl text-[var(--text)] placeholder-gray-600 focus:ring-2 focus:border-transparent transition-all duration-300"
                 />
                 <button
                   type="button"
                   @click="showPassword = !showPassword"
-                  class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white transition-colors"
+                  class="text-[var(--icon-color)] absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white transition-colors"
                   aria-label="Toggle password visibility"
                 >
                   <svg
@@ -95,15 +90,15 @@
             </div>
 
             <!-- Remember Me & Forgot Password -->
-            <div class="flex items-center justify-between text-sm">
-              <label class="flex items-center text-gray-300">
+            <div class="flex items-center justify-between text-base">
+              <label class="flex items-center text-[var(--text)]">
                 <input
                   type="checkbox"
-                  class="mr-2 rounded-full border-gray-300 text-purple-600 focus:ring-purple-500 bg-white/10 border-white/20"
+                  class="mr-2 rounded-full text-[var(--text)] text-base bg-[var(--primary)] border-black/20"
                 />
                 Remember me
               </label>
-              <a href="#" class="text-white hover:text-gray-300 hover:bg-transparent">
+              <a href="#" class="text-[var(--text)] text-base hover:text-gray-900 hover:bg-transparent">
                 Forgot password?
               </a>
             </div>
@@ -112,7 +107,7 @@
             <button
               type="submit"
               :disabled="loading"
-              class="w-full relative overflow-hidden bg-white text-black font-semibold py-3 px-6 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              class="w-full relative overflow-hidden bg-[var(--primary)] text-white font-semibold py-3 px-6 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span v-if="!loading" class="flex items-center justify-center">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,7 +132,7 @@
           <!-- Divider -->
           <div class="my-6 flex items-center">
             <div class="flex-1 border-t border-white/20"></div>
-            <span class="px-4 text-gray-400 text-sm">or</span>
+            <span class="px-4 text-gray-900 text-base">or</span>
             <div class="flex-1 border-t border-white/20"></div>
           </div>
 
@@ -145,7 +140,7 @@
           <div class="space-y-3">
             <button
               @click="handleGoogleLogin"
-              class="w-full flex items-center justify-center px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white hover:bg-white/20 transition-all duration-300 backdrop-blur-sm"
+              class="w-full flex items-center justify-center px-4 py-3 bg-white/10 border border-black/20 rounded-xl text-black hover:bg-white/20 shadow-sm transition-all duration-300 backdrop-blur-sm"
             >
               <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                 <path
@@ -175,11 +170,11 @@
           </div>
 
           <!-- Sign Up Link -->
-          <p class="mt-6 text-center text-gray-400">
+          <p class="mt-6 text-center text-gray-900">
             Don't have an account?
             <a
               href="#"
-              class="text-white hover:text-gray-300 hover:bg-transparent ont-semibold transition-colors"
+              class="text-gray-700 hover:text-gray-900 hover:bg-transparent ont-semibold transition-colors"
             >
               Sign up
             </a>
@@ -316,12 +311,12 @@ input:focus~::placeholder{
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(147, 51, 234, 0.5);
+  background: #4ebcb1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(147, 51, 234, 0.7);
+  background: #4ebcb1;
 }
 
 /* Mobile Responsiveness */
